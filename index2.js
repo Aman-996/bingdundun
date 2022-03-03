@@ -54,9 +54,9 @@ article{position: relative;width: 477px;height: 555px;margin: 300px auto;}
 
 .animation {position: absolute;width: 100%;height: 100%;background-color: #333;border-radius: 50% 50% 0 0;z-index: 10;animation-duration: 1000ms;animation-direction: alternate-reverse;animation-timing-function: ease-in;animation-iteration-count: infinite}
 
-.mask3 {top: -50px;left: -50px;transform: rotate(-46deg);animation-name: eye-blink;animation-delay: 2.4s}
+.mask3 {top: -50px;left: -50px;transform: rotate(-46deg);animation-name: eye-blink;animation-delay: 2.2s}
   
-.mask5 {top: -50px;left: 50px;transform: rotate(45deg);animation-name: eye-blink3}
+.mask5 {top: -50px;left: 50px;transform: rotate(45deg);animation-name: eye-blink3} 
 
 .socket2 {width: 55px;height: 55px;border-radius: 50%;background-color: #423e37;transform: translate(5px, 5px);}
 
@@ -91,6 +91,8 @@ let n = 1;
 demo1.innerHTML = string.substring(0, n);
 demo2.innerText = string.substring(0, n);
 
+let times = 100
+
 // 封装定时器
 const time = () => {
   n += 1;
@@ -106,42 +108,49 @@ const time = () => {
 let id = setInterval(() => {
   // 调用定时器
   time()
-},100)
+},times)
 
-// 暂停
-btn_stop.onclick = () => {
-  console.log('123');
-  clearInterval(id)
-}
+
 
 // 开始
 btn_action.onclick = () => {
   id = setInterval(() => {
     // 调用定时器
     time()
-  },100)
+  },times)
+}
+
+// 暂停
+btn_stop.onclick = () => {
+  clearInterval(id)
 }
 
 // 慢速
 btn_slow.onclick = () => {
+  clearInterval(id)
+  times = 300
   id = setInterval(() => {
     // 调用定时器
     time()
-  },300)
+  },times)
 }
 
 // 中速
 btn_speed.onclick = () => {
+  clearInterval(id)
+  times = 100
   id = setInterval(() => {
     // 调用定时器
     time()
-  },100)
+  },times)
 }
 
 // 快速
 btn_quick.onclick = () => {
+  clearInterval(id)
+  times = 0
   id = setInterval(() => {
     // 调用定时器
     time()
-  },0)
+  },times)
 }
